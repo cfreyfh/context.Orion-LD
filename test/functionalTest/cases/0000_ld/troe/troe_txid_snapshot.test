@@ -48,7 +48,7 @@ payload='{
   "type": "T",
   "OriginSource": "OPC_Server_MuFit_03",
   "temperature": { "type": "Property", "value": 23.5, "accuracy": { "type": "Property", "value": 0.5 } },
-  "status": "running"
+  "machineState": "running"
 }'
 orionCurl --url /ngsi-ld/v1/entities --payload "$payload"
 echo
@@ -150,7 +150,7 @@ urn:ngsi-ld:tx:
 =====================================================================================
 id
 https://uri.etsi.org/ngsi-ld/default-context/OriginSource
-https://uri.etsi.org/ngsi-ld/default-context/status
+https://uri.etsi.org/ngsi-ld/default-context/machineState
 https://uri.etsi.org/ngsi-ld/default-context/temperature
 
 
