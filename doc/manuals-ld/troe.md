@@ -91,7 +91,7 @@ Rows written before this feature was introduced have `txId = NULL` (no backfill)
 
 ### Example: attributes written together with a given attribute value
 
-To retrieve all attributes that were written in the same operation as `OriginSource = OPC_Server_MuFit_03`:
+To retrieve all attributes that were written in the same operation as `OriginSource = OPC_Server_01`:
 
 ```sql
 SELECT a.*
@@ -99,7 +99,7 @@ FROM   attributes a
 WHERE  a.txId IN (
          SELECT txId FROM attributes
          WHERE  id = '<expanded OriginSource attribute name>'  -- TRoE stores 'id' expanded; '.' is replaced by '='
-         AND    text = 'OPC_Server_MuFit_03'
+         AND    text = 'OPC_Server_01'
        );
 ```
 
