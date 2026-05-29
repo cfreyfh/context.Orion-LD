@@ -34,6 +34,7 @@ extern "C"
 #include "orionld/types/PgAppendBuffer.h"                      // PgAppendBuffer
 #include "orionld/common/orionldState.h"                       // orionldState
 #include "orionld/troe/pgAppend.h"                             // pgAppend
+#include "orionld/troe/troeTxId.h"                             // troeTxId
 #include "orionld/troe/pgEntityAppend.h"                       // pgEntityAppend
 
 
@@ -51,6 +52,8 @@ extern "C"
 void pgEntityAppend(PgAppendBuffer* entitiesBufferP, const char* opMode, const char* entityId, const char* entityType, const char* instanceId)
 {
   const char*  comma = (entitiesBufferP->values != 0)? "," : "";
+
+  troeTxId();  // Ensure the per-request transaction/snapshot id is generated
 
   // Calculate needed size: all string parameters + SQL syntax overhead
   int neededSize = strlen(instanceId) + strlen(orionldState.requestTimeString)

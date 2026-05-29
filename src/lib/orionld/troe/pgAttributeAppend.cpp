@@ -36,6 +36,7 @@ extern "C"
 #include "orionld/common/orionldState.h"                       // orionldState
 #include "orionld/common/eqForDot.h"                           // eqForDot
 #include "orionld/troe/pgAppend.h"                             // pgAppend
+#include "orionld/troe/troeTxId.h"                             // troeTxId
 #include "orionld/troe/pgQuotedString.h"                       // pgQuotedString
 #include "orionld/troe/kjGeoPointExtract.h"                    // kjGeoPointExtract
 #include "orionld/troe/kjGeoMultiPointExtract.h"               // kjGeoMultiPointExtract
@@ -122,6 +123,8 @@ void pgAttributeAppend
     datasetId  = (char*) "None";
 
   const char* hasSubProperties = (subProperties == true)? "true" : "false";
+
+  troeTxId();  // Ensure the per-request transaction/snapshot id is generated
 
   //
   // Calculate needed buffer size based on fixed parts of the SQL VALUES row.
